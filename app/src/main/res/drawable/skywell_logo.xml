@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Skywell marka renkleriyle stilize "S" logosu -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Arka plan daire -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M60,0 A60,60 0 1,1 60,120 A60,60 0 1,1 60,0 Z"/>
+
+    <!-- Üst yay -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="8"
+        android:fillColor="#00000000"
+        android:pathData="M32,42 Q32,24 60,24 Q88,24 88,42 Q88,58 60,60"/>
+
+    <!-- Alt yay -->
+    <path
+        android:strokeColor="#00AAFF"
+        android:strokeWidth="8"
+        android:fillColor="#00000000"
+        android:pathData="M88,78 Q88,96 60,96 Q32,96 32,78 Q32,62 60,60"/>
+
+</vector>

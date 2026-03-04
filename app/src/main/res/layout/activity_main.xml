@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D1B2A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="40dp">
+
+        <!-- Skywell Logo -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/skywell_logo"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Marka adı -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skywell Gelişmiş Asistan"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By XemBiLL"
+            android:textSize="12sp"
+            android:textColor="#1E90FF"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="36dp"/>
+
+        <!-- İzin Adımı -->
+        <LinearLayout
+            android:id="@+id/layoutPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mikrofon ve ekran üzeri izinleri gerekli."
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="#162030"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnPermissions"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="İzinleri Ver"
+                android:backgroundTint="#1565C0"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Devam Et"
+                android:backgroundTint="#007A4D"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+        <!-- İsim Adımı -->
+        <LinearLayout
+            android:id="@+id/layoutName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merhaba! Sana nasıl hitap etmemi istersin?"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Girilen ismi gösteren alan -->
+            <TextView
+                android:id="@+id/tvNameDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text=""
+                android:hint="Harflere bas..."
+                android:textColorHint="#666666"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:background="#162030"
+                android:padding="8dp"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- Klavye satır 1: Q W E R T Y U I O P -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="6dp">
+                <Button android:id="@+id/kQ" style="@style/KeyBtn" android:text="Q"/>
+                <Button android:id="@+id/kW" style="@style/KeyBtn" android:text="W"/>
+                <Button android:id="@+id/kE" style="@style/KeyBtn" android:text="E"/>
+                <Button android:id="@+id/kR" style="@style/KeyBtn" android:text="R"/>
+                <Button android:id="@+id/kT" style="@style/KeyBtn" android:text="T"/>
+                <Button android:id="@+id/kY" style="@style/KeyBtn" android:text="Y"/>
+                <Button android:id="@+id/kU" style="@style/KeyBtn" android:text="U"/>
+                <Button android:id="@+id/kI" style="@style/KeyBtn" android:text="I"/>
+                <Button android:id="@+id/kO" style="@style/KeyBtn" android:text="O"/>
+                <Button android:id="@+id/kP" style="@style/KeyBtn" android:text="P"/>
+                <Button android:id="@+id/kII" style="@style/KeyBtnAlt" android:text="İ"/>
+            </LinearLayout>
+
+            <!-- Klavye satır 2: A S D F G H J K L Ş -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="6dp">
+                <Button android:id="@+id/kA" style="@style/KeyBtn" android:text="A"/>
+                <Button android:id="@+id/kS" style="@style/KeyBtn" android:text="S"/>
+                <Button android:id="@+id/kD" style="@style/KeyBtn" android:text="D"/>
+                <Button android:id="@+id/kF" style="@style/KeyBtn" android:text="F"/>
+                <Button android:id="@+id/kG" style="@style/KeyBtn" android:text="G"/>
+                <Button android:id="@+id/kH" style="@style/KeyBtn" android:text="H"/>
+                <Button android:id="@+id/kJ" style="@style/KeyBtn" android:text="J"/>
+                <Button android:id="@+id/kK" style="@style/KeyBtn" android:text="K"/>
+                <Button android:id="@+id/kL" style="@style/KeyBtn" android:text="L"/>
+                <Button android:id="@+id/kSS" style="@style/KeyBtnAlt" android:text="Ş"/>
+                <Button android:id="@+id/kOO" style="@style/KeyBtnAlt" android:text="Ö"/>
+            </LinearLayout>
+
+            <!-- Klavye satır 3: Z X C V B N M Ü Ç Ğ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp">
+                <Button android:id="@+id/kZ" style="@style/KeyBtn" android:text="Z"/>
+                <Button android:id="@+id/kX" style="@style/KeyBtn" android:text="X"/>
+                <Button android:id="@+id/kC" style="@style/KeyBtn" android:text="C"/>
+                <Button android:id="@+id/kV" style="@style/KeyBtn" android:text="V"/>
+                <Button android:id="@+id/kB" style="@style/KeyBtn" android:text="B"/>
+                <Button android:id="@+id/kN" style="@style/KeyBtn" android:text="N"/>
+                <Button android:id="@+id/kM" style="@style/KeyBtn" android:text="M"/>
+                <Button android:id="@+id/kUU" style="@style/KeyBtnAlt" android:text="Ü"/>
+                <Button android:id="@+id/kCC" style="@style/KeyBtnAlt" android:text="Ç"/>
+                <Button android:id="@+id/kGG" style="@style/KeyBtnAlt" android:text="Ğ"/>
+            </LinearLayout>
+
+            <!-- Alt satır: Boşluk, Sil, Tamam -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="4dp">
+
+                <Button
+                    android:id="@+id/kSpace"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="2"
+                    android:text="Boşluk"
+                    android:backgroundTint="#223040"
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="6dp"/>
+
+                <Button
+                    android:id="@+id/kBack"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:text="⌫"
+                    android:backgroundTint="#5C3A1E"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="6dp"/>
+
+                <Button
+                    android:id="@+id/btnSaveName"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="2"
+                    android:text="Başlayalım 🚀"
+                    android:backgroundTint="#1565C0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

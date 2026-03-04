@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.skywell.assistant'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.skywell.assistant"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    packagingOptions {
+        pickFirst 'lib/arm64-v8a/libkaldi_jni.so'
+        pickFirst 'lib/armeabi-v7a/libkaldi_jni.so'
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.12.0'
+
+    // Vosk offline speech recognition (grammar mode ile kullanılıyor)
+    implementation('com.alphacephei:vosk-android:0.3.47') {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+}

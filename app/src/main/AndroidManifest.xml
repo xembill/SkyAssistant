@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Mikrofon erişimi -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Overlay (yüzen buton/UI) -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Boot'ta otomatik başlatma -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Foreground service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <!-- Ekran parlaklığı ayarı -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- Telefon -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- Bildirim -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Wakelock (sürekli dinleme) -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="SkyAssistant"
+        android:theme="@style/AppTheme">
+
+        <!-- Ana asistan servisi -->
+        <service
+            android:name=".service.AssistantService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- Yüzen buton servisi -->
+        <service
+            android:name=".service.FloatingButtonService"
+            android:exported="false" />
+
+        <!-- Boot'ta başlat -->
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Direksiyon simidi tuşu (IVOKA) -->
+        <receiver
+            android:name=".receiver.IvokaReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.qinggan.iovka.START_IVOKA" />
+                <action android:name="com.skywell.assistant.START_LISTENING" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Asistan varsayılan uygulama olarak kayıt -->
+        <activity
+            android:name=".ui.AssistantActivity"
+            android:exported="true"
+            android:theme="@style/TransparentTheme"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- İzin ayar ekranı — gelecek sürüm için yer tutucu -->
+        <!-- <activity
+            android:name=".ui.PermissionActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" /> -->
+
+    </application>
+
+</manifest>

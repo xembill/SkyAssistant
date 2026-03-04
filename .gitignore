@@ -1,0 +1,19 @@
+# Android build outputs
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing keys
+*.keystore
+*.jks
+
+# IDE-specific
+*.swp
+*.swo
