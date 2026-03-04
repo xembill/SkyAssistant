@@ -24,8 +24,13 @@ public class TurkishCommandParser {
         HVAC_ANION_ON, HVAC_PURIFIER_ON, HVAC_PURIFIER_OFF,
         LOCK_ALL, UNLOCK_ALL,
         WINDOW_CLOSE_ALL, WINDOW_OPEN_ALL,
+        WINDOW_OPEN_FL, WINDOW_CLOSE_FL,   // sol ön / sürücü
+        WINDOW_OPEN_FR, WINDOW_CLOSE_FR,   // sağ ön / yolcu
+        WINDOW_OPEN_RL, WINDOW_CLOSE_RL,   // sol arka
+        WINDOW_OPEN_RR, WINDOW_CLOSE_RR,   // sağ arka
         TRUNK_OPEN, TRUNK_CLOSE,
         SUNROOF_OPEN, SUNROOF_CLOSE,
+        SYSTEM_REBOOT,
         LIGHTS_WELCOME_ON, LIGHTS_WELCOME_OFF,
         LOGO_LED_OFF, LOGO_LED_ON,
         MODE_ECO, MODE_SPORT, MODE_SUPER_RANGE, MODE_SNOW,
@@ -163,10 +168,44 @@ public class TurkishCommandParser {
                 "arabanı aç", "arabayı aç", "kilit aç");
 
         addKeywords(IntentType.WINDOW_CLOSE_ALL, null,
-                "pencereleri kapat", "camları kapat", "camı kapat");
+                "pencereleri kapat", "camları kapat", "tüm camları kapat", "bütün camları kapat");
 
         addKeywords(IntentType.WINDOW_OPEN_ALL, null,
-                "pencereleri aç", "camları aç", "camı aç");
+                "pencereleri aç", "camları aç", "tüm camları aç", "bütün camları aç");
+
+        // Tekil camlar — aç
+        addKeywords(IntentType.WINDOW_OPEN_FL, null,
+                "sürücü camını aç", "sol ön camı aç", "sol camı aç",
+                "ön sol camı aç", "sürücü tarafı camı aç");
+
+        addKeywords(IntentType.WINDOW_OPEN_FR, null,
+                "yolcu camını aç", "sağ ön camı aç", "sağ camı aç",
+                "ön sağ camı aç", "yolcu tarafı camı aç");
+
+        addKeywords(IntentType.WINDOW_OPEN_RL, null,
+                "sol arka camı aç", "arka sol camı aç",
+                "arka sol pencereyi aç");
+
+        addKeywords(IntentType.WINDOW_OPEN_RR, null,
+                "sağ arka camı aç", "arka sağ camı aç",
+                "arka sağ pencereyi aç");
+
+        // Tekil camlar — kapat
+        addKeywords(IntentType.WINDOW_CLOSE_FL, null,
+                "sürücü camını kapat", "sol ön camı kapat", "sol camı kapat",
+                "ön sol camı kapat", "sürücü tarafı camı kapat");
+
+        addKeywords(IntentType.WINDOW_CLOSE_FR, null,
+                "yolcu camını kapat", "sağ ön camı kapat", "sağ camı kapat",
+                "ön sağ camı kapat", "yolcu tarafı camı kapat");
+
+        addKeywords(IntentType.WINDOW_CLOSE_RL, null,
+                "sol arka camı kapat", "arka sol camı kapat",
+                "arka sol pencereyi kapat");
+
+        addKeywords(IntentType.WINDOW_CLOSE_RR, null,
+                "sağ arka camı kapat", "arka sağ camı kapat",
+                "arka sağ pencereyi kapat");
 
         addKeywords(IntentType.TRUNK_OPEN, null,
                 "bagajı aç", "arka kapıyı aç");
@@ -251,6 +290,11 @@ public class TurkishCommandParser {
 
         addKeywords(IntentType.SCREEN_OFF, null,
                 "ekranı kapat", "ekran kapat", "uyku modu");
+
+        addKeywords(IntentType.SYSTEM_REBOOT, null,
+                "yeniden başlat", "tablet yeniden başlat", "sistemi yeniden başlat",
+                "ekranı yeniden başlat", "cihazı yeniden başlat",
+                "reboot", "restart", "sıfırla ve başlat");
 
         addKeywords(IntentType.HOME_SCREEN, null,
                 "ana ekran", "ana ekrana git", "eve git", "anasayfa");

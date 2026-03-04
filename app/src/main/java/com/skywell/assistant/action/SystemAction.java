@@ -82,10 +82,20 @@ public class SystemAction {
             }
 
             case SCREEN_OFF: {
-                // Güç tuşu simüle et
                 Intent i = new Intent(Intent.ACTION_SCREEN_OFF);
                 context.sendBroadcast(i);
                 return "Ekran kapatılıyor.";
+            }
+
+            case SYSTEM_REBOOT: {
+                try {
+                    // Root ile güvenli reboot
+                    Runtime.getRuntime().exec(new String[]{"su", "-c", "reboot"});
+                    return "Sistem yeniden başlatılıyor. Birkaç saniye içinde kapanacak.";
+                } catch (Exception e) {
+                    Log.e(TAG, "Reboot başarısız: " + e.getMessage());
+                    return "Yeniden başlatma yapılamadı. Root yetkisi gerekiyor.";
+                }
             }
 
             case HOME_SCREEN: {

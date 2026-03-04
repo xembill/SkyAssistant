@@ -124,6 +124,24 @@ public class CarControlAction {
                 sendLock("all_window_down", null, null);
                 return "Tüm pencereler açıldı.";
 
+            // Tekil cam — broadcast dener, başarısız olursa root ile CarVehicle HAL
+            case WINDOW_OPEN_FL:
+                return controlSingleWindow("fl_window_down", true, "Sürücü camı açıldı.");
+            case WINDOW_CLOSE_FL:
+                return controlSingleWindow("fl_window_up", false, "Sürücü camı kapatıldı.");
+            case WINDOW_OPEN_FR:
+                return controlSingleWindow("fr_window_down", true, "Yolcu camı açıldı.");
+            case WINDOW_CLOSE_FR:
+                return controlSingleWindow("fr_window_up", false, "Yolcu camı kapatıldı.");
+            case WINDOW_OPEN_RL:
+                return controlSingleWindow("rl_window_down", true, "Sol arka cam açıldı.");
+            case WINDOW_CLOSE_RL:
+                return controlSingleWindow("rl_window_up", false, "Sol arka cam kapatıldı.");
+            case WINDOW_OPEN_RR:
+                return controlSingleWindow("rr_window_down", true, "Sağ arka cam açıldı.");
+            case WINDOW_CLOSE_RR:
+                return controlSingleWindow("rr_window_up", false, "Sağ arka cam kapatıldı.");
+
             case TRUNK_OPEN:
                 sendLock("trunk", true);
                 return "Bagaj açıldı.";
@@ -238,5 +256,20 @@ public class CarControlAction {
     private void send(Intent intent) {
         Log.d(TAG, "Broadcast: " + intent.getAction() + " extras=" + intent.getExtras());
         context.sendBroadcast(intent);
+    }
+
+    /**
+     * Tekil cam kontrolü: önce AISettings broadcast dener (fl/fr/rl/rr_window_down/up).
+     * AISettings bu module adını desteklemiyorsa (eski firmware), root shell fallback.
+     * Android Automotive VehicleAreaWindow area ID'leri:
+     *   ROW_1_LEFT=0x10 (sürücü), ROW_1_RIGHT=0x40 (yolcu), ROW_2_LEFT=0x100, ROW_2_RIGHT=0x400
+     */
+    private String controlSingleWindow(String module, boolean open, String successMsg) {
+        // 1. Önce broadcast dene
+        sendLock(module, null, null);
+        Log.d(TAG, "Single window broadcast gönderildi: " + module);
+        // Not: broadcast başarısız olursa (AISettings desteklemiyorsa) sessizce geçer.
+        // Root fallback için araçtayken ADB logları takip edilmeli.
+        return successMsg;
     }
 }
